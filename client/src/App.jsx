@@ -9,6 +9,7 @@ function App() {
   });
 
   const [loading, setLoading] = useState(false);
+  const BASE_URL = "https://cta-check.onrender.com";
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -25,7 +26,7 @@ function App() {
     try {
       setLoading(true);
 
-      const res = await fetch("http://localhost:5000/api/contact", {
+      const res = await fetch(`${BASE_URL}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,13 +51,13 @@ function App() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
       <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-lg">
-        
+
         <h2 className="text-2xl font-bold mb-6 text-center">
           Contact Us
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          
+
           <input
             type="text"
             name="name"
